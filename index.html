@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Emmanuel | Premium Portfolio</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#0a0a0a',
+                        'secondary': '#1a1a1a',
+                        'light': '#f8fafc',
+                        'light-secondary': '#e2e8f0',
+                        'gold': '#D4AF37',
+                        'gold-light': '#F4E4A6',
+                        'gold-dark': '#B8860B',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'blink-caret': 'blinkCaret 0.75s step-end infinite',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'slide-left': 'slideLeft 0.6s ease-out forwards',
+                        'slide-right': 'slideRight 0.6s ease-out forwards',
+                        'scale-in': 'scaleIn 0.6s ease-out forwards',
+                        'rotate-in': 'rotateIn 0.8s ease-out forwards',
+                        'parallax': 'parallax linear',
+                        'text-reveal': 'textReveal 1.5s ease-out forwards',
+                        'gold-glow': 'goldGlow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' }
+                        },
+                        blinkCaret: {
+                            'from, to': { 'border-color': 'transparent' },
+                            '50%': { 'border-color': '#D4AF37' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(100px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-100px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        rotateIn: {
+                            '0%': { transform: 'rotate(-10deg) scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'rotate(0deg) scale(1)', opacity: '1' },
+                        },
+                        parallax: {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(-50%)' },
+                        },
+                        textReveal: {
+                            '0%': { clipPath: 'inset(0 100% 0 0)' },
+                            '100%': { clipPath: 'inset(0 0 0 0)' },
+                        },
+                        goldGlow: {
+                            '0%': { 
+                                'box-shadow': '0 0 10px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.1)',
+                                'text-shadow': '0 0 5px rgba(212, 175, 55, 0.5)'
+                            },
+                            '100%': { 
+                                'box-shadow': '0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3)',
+                                'text-shadow': '0 0 10px rgba(212, 175, 55, 0.8)'
+                            }
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-gold': 'linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #B8860B 100%)',
+                        'gradient-dark': 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
+                        'gradient-light': 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                        'gold-shine': 'linear-gradient(45deg, transparent 25%, rgba(212, 175, 55, 0.1) 50%, transparent 75%)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 5px;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #B8860B;
+        }
+        
+        /* Typewriter animation */
+        .typewriter-container {
+            height: 2.5rem;
+            overflow: hidden;
+        }
+        
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #D4AF37;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blinkCaret 0.75s step-end infinite;
+        }
+        
+        /* Gold text effect */
+        .gold-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Section reveal animations */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Image cascade effect */
+        .cascade-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .cascade-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Gold border animation */
+        .gold-border {
+            position: relative;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #B8860B 100%) border-box;
+        }
+        
+        .dark .gold-border {
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #B8860B 100%) border-box;
+        }
+        
+        /* Gold button hover effect */
+        .gold-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: white;
+        }
+        
+        .gold-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .gold-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .gold-btn:hover::after {
+            left: 100%;
+        }
+        
+        /* Profile image circular with gold border */
+        .profile-image {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #B8860B 100%) border-box;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        .dark .profile-image {
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                        linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #B8860B 100%) border-box;
+        }
+        
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #B8860B 100%);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .profile-image:hover::before {
+            opacity: 1;
+        }
+        
+        /* Navbar gold accent */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, #B8860B);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Floating gold elements */
+        .floating-gold {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Gold glow animation */
+        .gold-glow {
+            animation: goldGlow 2s ease-in-out infinite alternate;
+        }
+        
+        /* Project card hover effect */
+        .project-card {
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .project-card:hover::before {
+            left: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .project-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Text reveal on scroll */
+        .text-reveal {
+            clip-path: inset(0 100% 0 0);
+            animation: textReveal 1.5s ease-out forwards;
+            animation-play-state: paused;
+        }
+        
+        .text-reveal.active {
+            animation-play-state: running;
+        }
+        
+        /* Inverted 3 effect */
+        .inverted-three {
+            display: inline-block;
+            color: #D4AF37;
+            font-weight: bold;
+            transform: scaleX(-1);
+            margin: 0 2px;
+        }
+    </style>
+</head>
+<body class="bg-light text-primary dark:bg-primary dark:text-light font-sans transition-colors duration-300">
+    
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 py-4 bg-white/90 dark:bg-secondary/90 backdrop-blur-lg border-b border-light-secondary/50 dark:border-gray-800/50">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-2 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    PE
+                </div>
+                <span class="font-bold text-xl text-primary dark:text-light group-hover:text-gold transition-colors duration-300">
+                    Prime<span class="inverted-three">3</span>mmanuel
+                </span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link font-medium text-gray-700 dark:text-gray-300 hover:text-gold dark:hover:text-gold-light transition-colors duration-300">
+                    Home
+                </a>
+                <a href="#projects" class="nav-link font-medium text-gray-700 dark:text-gray-300 hover:text-gold dark:hover:text-gold-light transition-colors duration-300">
+                    Projects
+                </a>
+                <a href="#about" class="nav-link font-medium text-gray-700 dark:text-gray-300 hover:text-gold dark:hover:text-gold-light transition-colors duration-300">
+                    About
+                </a>
+                <a href="#contact" class="nav-link font-medium text-gray-700 dark:text-gray-300 hover:text-gold dark:hover:text-gold-light transition-colors duration-300">
+                    Contact
+                </a>
+                
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-3 rounded-full bg-light-secondary dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gold hover:text-white transition-all duration-300 gold-glow">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                
+                <!-- CTA Button -->
+                <a href="#contact" class="gold-btn px-5 py-2.5 rounded-lg font-medium shadow-md">
+                    Let's Collaborate
+                </a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2.5 rounded-lg bg-light-secondary dark:bg-gray-800 text-gray-700 dark:text-gray-300 gold-glow">
+                <i class="fas fa-bars text-lg"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden fixed top-16 left-0 w-full bg-white dark:bg-secondary shadow-xl border-t border-light-secondary dark:border-gray-800 transform -translate-y-full opacity-0 transition-all duration-500">
+            <div class="flex flex-col py-4 px-6 space-y-1">
+                <a href="#home" class="nav-link py-3 font-medium text-gray-700 dark:text-gray-300 border-b border-light-secondary/30 dark:border-gray-800/30">
+                    Home
+                </a>
+                <a href="#projects" class="nav-link py-3 font-medium text-gray-700 dark:text-gray-300 border-b border-light-secondary/30 dark:border-gray-800/30">
+                    Projects
+                </a>
+                <a href="#about" class="nav-link py-3 font-medium text-gray-700 dark:text-gray-300 border-b border-light-secondary/30 dark:border-gray-800/30">
+                    About
+                </a>
+                <a href="#contact" class="nav-link py-3 font-medium text-gray-700 dark:text-gray-300 border-b border-light-secondary/30 dark:border-gray-800/30">
+                    Contact
+                </a>
+                <div class="pt-4 flex items-center justify-between">
+                    <span class="font-medium text-gray-700 dark:text-gray-300">Theme</span>
+                    <button id="mobile-theme-toggle" class="p-2 rounded-full bg-light-secondary dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                        <i id="mobile-theme-icon" class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16 overflow-hidden">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <!-- Animated gold particles -->
+            <div class="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-gold-light opacity-20 floating-gold"></div>
+            <div class="absolute top-1/3 right-1/3 w-6 h-6 rounded-full bg-gold opacity-10 floating-gold" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-8 h-8 rounded-full bg-gold-dark opacity-15 floating-gold" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 py-12 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <!-- Left Content - Text -->
+                <div class="lg:w-1/2">
+                    <div class="mb-6">
+                        <div class="inline-flex items-center px-4 py-2 rounded-full bg-gold/10 text-gold dark:text-gold-light text-sm font-medium mb-6 border border-gold/20">
+                            <i class="fas fa-crown mr-2"></i>
+                            Premium Digital Solutions
+                        </div>
+                        
+                        <h1 class="text-5xl md:text-6xl font-bold mb-6 reveal-section">
+                            <span class="block">Hey, I'm</span>
+                            <span class="gold-text">Prime Emmanuel</span>
+                        </h1>
+                        
+                        <div class="typewriter-container mb-6">
+                            <div id="typed-text" class="typewriter text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300"></div>
+                        </div>
+                        
+                        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 reveal-section" data-delay="0.2">
+                            CEO of <span class="font-semibold text-gold dark:text-gold-light">Mboa Vision & Delevva</span> - Crafting exceptional digital experiences that are fast, accessible, and visually stunning.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 mb-12 reveal-section" data-delay="0.4">
+                        <a href="mboa.html" class="gold-btn px-6 py-3 rounded-lg font-medium flex items-center">
+                            <i class="fas fa-bolt"></i>
+                            Visit Mboa Vision
+                        </a>
+                        <a href="#contact" class="px-6 py-3 border-2 border-gold text-gold dark:text-gold-light rounded-lg font-medium hover:bg-gold hover:text-white transition-all duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Contact Me
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="flex flex-wrap gap-8 reveal-section" data-delay="0.6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold gold-text">10+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Projects</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold gold-text">95%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Client Satisfaction</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold gold-text">24/7</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Support</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Circular Profile Image -->
+                <div class="lg:w-1/2 flex justify-center items-center">
+                    <div class="relative">
+                        <!-- Gold decorative rings -->
+                        <div class="absolute -inset-4 rounded-full border-2 border-gold/30 animate-spin-slow"></div>
+                        <div class="absolute -inset-8 rounded-full border-2 border-gold/20 animate-spin-slow" style="animation-direction: reverse; animation-duration: 20s;"></div>
+                        
+                        <!-- Main profile image -->
+                        <div class="profile-image cascade-item" data-delay="0.3">
+                            <img src="IMG-20250421-WA0085.jpg" 
+                                 alt="Prime Emmanuel" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Floating badges -->
+                        <div class="absolute -top-4 -right-4 px-4 py-2 bg-white dark:bg-secondary rounded-lg shadow-lg cascade-item" data-delay="0.5">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse mr-2"></div>
+                                <span class="font-medium text-sm">Available</span>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-6 left-0 px-4 py-2 bg-gradient-gold text-white rounded-lg shadow-lg cascade-item" data-delay="0.7">
+                            <span class="font-bold">CEO @ Mboa Vision & Delevva</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-light-secondary/30 dark:bg-gray-900/30 relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-5 dark:opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-gold"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal-section">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Featured <span class="gold-text">Projects</span>
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Each project is a unique piece of development, crafted with precision and attention to detail.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-secondary rounded-2xl overflow-hidden gold-border cascade-item" data-delay="0.1">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D" 
+                             alt="Delevva Platform" 
+                             class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 rounded-full bg-gold text-white text-xs font-medium">
+                                64% Complete
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Poedagar</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            A beautiful universe of premium and luxury watches.
+                        </p>
+                        
+                        <!-- Tech Stack -->
+                       
+                        <!-- Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="watch.html" class="gold-btn flex-1 px-4 py-3 rounded-lg font-medium text-center">
+                                View project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-secondary rounded-2xl overflow-hidden gold-border cascade-item" data-delay="0.2">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Bollyfit Antwerp" 
+                             class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 rounded-full bg-gold text-white text-xs font-medium">
+                                85% Complete
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Bollyfit Antwerp</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            Dance class platform with booking system, instructor profiles, and class management.
+                        </p>
+                        
+                        <!-- Tech Stack -->
+                       
+                        <!-- Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="bollyfit.html" class="gold-btn flex-1 px-4 py-3 rounded-lg font-medium text-center">
+                                View Project
+                            </a>
+                          
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-secondary rounded-2xl overflow-hidden gold-border cascade-item" data-delay="0.3">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="wentouch.jpg" 
+                             alt="WenTouch Beauty" 
+                             class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 rounded-full bg-gold text-white text-xs font-medium">
+                                50% Complete
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">WenTouch</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            Beauty salon website with service booking, portfolio showcase, and client management system.
+                        </p>
+                        
+                        <!-- Tech Stack -->
+                       
+                        
+                        <!-- Buttons -->
+                        <div class="flex space-x-3">
+                            <a href="wentouch.html" class="gold-btn flex-1 px-4 py-3 rounded-lg font-medium text-center">
+                                View Project
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View All Button -->
+            <div class="text-center mt-16 reveal-section" data-delay="0.4">
+                <a href="#" class="inline-flex items-center px-8 py-4 border-2 border-gold text-gold dark:text-gold-light rounded-xl font-medium hover:bg-gold hover:text-white transition-all duration-300 group">
+                    <span></span>
+                    <i class="fas fa- ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-24 relative overflow-hidden">
+        <!-- Gold accent elements -->
+        <div class="absolute top-1/4 -right-24 w-48 h-48 rounded-full bg-gold/5"></div>
+        <div class="absolute bottom-1/4 -left-24 w-64 h-64 rounded-full bg-gold/10"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Left Content - Image with cascade effect -->
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -inset-6 rounded-3xl bg-gradient-gold opacity-20 blur-xl"></div>
+                        
+                        <div class="relative rounded-2xl overflow-hidden cascade-item" data-delay="0.1">
+                            <img src="WhatsApp Image 2025-12-09 à 15.40.22_c186f7d5.jpg" 
+                                 alt="Prime working" 
+                                 class="w-full h-auto object-cover rounded-2xl">
+                        </div>
+                        
+                        <!-- Experience badge -->
+                        <div class="absolute -bottom-6 -right-6 w-40 h-40 rounded-full bg-gradient-gold flex flex-col items-center justify-center text-white shadow-2xl cascade-item" data-delay="0.3">
+                            <span class="text-5xl font-bold">3+</span>
+                            <span class="text-sm font-medium">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Text -->
+                <div class="lg:w-1/2">
+                    <div class="mb-8 reveal-section" data-delay="0.2">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            About <span class="gold-text">Me</span>
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <p class="text-xl text-gray-600 dark:text-gray-400">
+                                Born in 2000 in Kribi (Cameroon), I'm a passionate <span class="font-semibold text-gold dark:text-gold-light">full-stack developer</span> and <span class="font-semibold text-gold dark:text-gold-light">UI designer</span> with a background in law. My journey in tech started when I built my first website design back in 2018, and I've been hooked ever since.
+                            </p>
+                            
+                            <p class="text-xl text-gray-600 dark:text-gray-400">
+                                As the CEO of <span class="font-semibold text-gold dark:text-gold-light">Mboa Vision</span>, I lead a team that builds websites tailored to resolve business problems with optimized solutions. We specialize in creating exceptional digital experiences that are fast, accessible, and visually stunning.
+                            </p>
+                            
+                            <p class="text-xl text-gray-600 dark:text-gray-400">
+                                What excites me most is solving real problems with clean, efficient code and intuitive user interfaces. I believe in the power of technology to transform businesses and create meaningful impact.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills -->
+                    <div class="mb-10 reveal-section" data-delay="0.4">
+                        <h3 class="text-2xl font-bold mb-6">Core Expertise</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="px-5 py-2.5 bg-gold/10 text-gold dark:text-gold-light rounded-xl font-medium border border-gold/20">
+                                Full-Stack Development
+                            </span>
+                            <span class="px-5 py-2.5 bg-gold/10 text-gold dark:text-gold-light rounded-xl font-medium border border-gold/20">
+                                UI/UX Design
+                            </span>
+                            <span class="px-5 py-2.5 bg-gold/10 text-gold dark:text-gold-light rounded-xl font-medium border border-gold/20">
+                                Business Strategy
+                            </span>
+                            <span class="px-5 py-2.5 bg-gold/10 text-gold dark:text-gold-light rounded-xl font-medium border border-gold/20">
+                                Project Management
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Philosophy -->
+                    <div class="p-6 rounded-2xl bg-gold/5 border border-gold/20 reveal-section" data-delay="0.6">
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-quote-left text-3xl text-gold dark:text-gold-light mt-1"></i>
+                            <div>
+                                <p class="text-lg text-gray-700 dark:text-gray-300 italic mb-2">
+                                    "Technology is most powerful when it solves real human problems. Every line of code should serve a purpose, and every design should enhance the user experience."
+                                </p>
+                                <p class="text-gold dark:text-gold-light font-medium">— Prime Emmanuel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-light-secondary/30 dark:bg-gray-900/30 relative overflow-hidden">
+        <!-- Gold pattern background -->
+        <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23D4AF37" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal-section">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Let's <span class="gold-text">Connect</span>
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Have a project in mind or want to discuss a potential collaboration? I'd love to hear from you.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <!-- Email -->
+                    <div class="bg-white dark:bg-secondary rounded-2xl p-6 gold-border cascade-item" data-delay="0.1">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-gold flex items-center justify-center text-white text-2xl shadow-lg">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Email</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-3">Malongueprime@gmail.com</p>
+                                <a href="mailto:Malongueprime@gmail.com" class="text-gold dark:text-gold-light font-medium hover:underline inline-flex items-center">
+                                    Send a message
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- WhatsApp -->
+                    <div class="bg-white dark:bg-secondary rounded-2xl p-6 gold-border cascade-item" data-delay="0.2">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-gold flex items-center justify-center text-white text-2xl shadow-lg">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">WhatsApp</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-3">+237 656 335 789</p>
+                                <a href="https://wa.me/237656335789" target="_blank" class="text-gold dark:text-gold-light font-medium hover:underline inline-flex items-center">
+                                    Start a conversation
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="bg-white dark:bg-secondary rounded-2xl p-6 gold-border cascade-item" data-delay="0.3">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-gold flex items-center justify-center text-white text-2xl shadow-lg">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Douala, Bonaberi</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="pt-8 cascade-item" data-delay="0.4">
+                        <h4 class="text-xl font-bold mb-6">Follow my socials</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Prime-Emmanuel" class="w-12 h-12 rounded-xl bg-light-secondary dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gold hover:text-white transition-all duration-300">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/prime-emmanuel-37905a2b8" class="w-12 h-12 rounded-xl bg-light-secondary dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gold hover:text-white transition-all duration-300">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                            <a href="https://x.com/Priimzboy_99?t=P4fyS2jUwR7GkeXZlk1HVQ&s=09" class="w-12 h-12 rounded-xl bg-light-secondary dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gold hover:text-white transition-all duration-300">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </a>
+                            <a href="https://www.instagram.com/priimzboy.dev?igsh=djV6dGVoOGU4dHN0" class="w-12 h-12 rounded-xl bg-light-secondary dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gold hover:text-white transition-all duration-300">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white dark:bg-secondary rounded-2xl p-8 shadow-xl gold-border cascade-item" data-delay="0.5">
+                    <h3 class="text-2xl font-bold mb-8">Send a Message</h3>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-xl border border-light-secondary dark:border-gray-700 bg-light dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-xl border border-light-secondary dark:border-gray-700 bg-light dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-xl border border-light-secondary dark:border-gray-700 bg-light dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" placeholder="Project Inquiry" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-xl border border-light-secondary dark:border-gray-700 bg-light dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full gold-btn px-6 py-4 rounded-xl font-medium text-lg shadow-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 bg-secondary dark:bg-gray-950 text-light border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Logo and Copyright -->
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center text-white font-bold shadow-lg">
+                            PE
+                        </div>
+                        <span class="font-bold text-xl">
+                            Prime<span class="inverted-three">3</span>mmanuel
+                        </span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2025 Developed by Mboa Vision. All rights reserved.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+                    <a href="#home" class="text-gray-400 hover:text-gold-light transition-colors duration-300">Home</a>
+                    <a href="#projects" class="text-gray-400 hover:text-gold-light transition-colors duration-300">Projects</a>
+                    <a href="#about" class="text-gray-400 hover:text-gold-light transition-colors duration-300">About</a>
+                    <a href="#contact" class="text-gray-400 hover:text-gold-light transition-colors duration-300">Contact</a>
+                </div>
+                
+                <!-- Back to Top -->
+                <button id="back-to-top" class="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 gold-glow">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typewriter Effect
+            const typedTextSpan = document.getElementById("typed-text");
+            const texts = [
+                "Jurist, Full Stack Developer & UI Designer",
+                "CEO of Mboa Vision",
+                "Digital Solutions Architect",
+                "Business Technology Consultant",
+                "Premium Web Experience Creator"
+            ];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingDelay = 100;
+            let erasingDelay = 50;
+            let newTextDelay = 2000;
+
+            function type() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    typedTextSpan.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingDelay = erasingDelay;
+                } else {
+                    typedTextSpan.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingDelay = 100;
+                }
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    typingDelay = newTextDelay;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex++;
+                    if (textIndex >= texts.length) {
+                        textIndex = 0;
+                    }
+                    typingDelay = 500;
+                }
+                
+                setTimeout(type, typingDelay);
+            }
+            
+            // Start typing effect
+            setTimeout(type, 1500);
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+            
+            // Check for saved theme preference or default to light
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                mobileThemeIcon.classList.remove('fa-moon');
+                mobileThemeIcon.classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                mobileThemeIcon.classList.remove('fa-sun');
+                mobileThemeIcon.classList.add('fa-moon');
+            }
+            
+            // Theme toggle functionality
+            function toggleTheme() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    mobileThemeIcon.classList.remove('fa-sun');
+                    mobileThemeIcon.classList.add('fa-moon');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    mobileThemeIcon.classList.remove('fa-moon');
+                    mobileThemeIcon.classList.add('fa-sun');
+                }
+            }
+            
+            themeToggle.addEventListener('click', toggleTheme);
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+            
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuItems = mobileMenu.querySelectorAll('a');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                if (mobileMenu.classList.contains('translate-y-0')) {
+                    // Close menu
+                    mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+                    mobileMenu.classList.add('-translate-y-full', 'opacity-0');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+                } else {
+                    // Open menu
+                    mobileMenu.classList.remove('-translate-y-full', 'opacity-0');
+                    mobileMenu.classList.add('translate-y-0', 'opacity-100');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-times text-lg"></i>';
+                }
+            });
+            
+            // Close mobile menu when clicking on menu items
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+                    mobileMenu.classList.add('-translate-y-full', 'opacity-0');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+                });
+            });
+            
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Form Submission
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Simple validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Show success message
+                alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon at ${email}.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+            
+            // Scroll Animations
+            function initScrollAnimations() {
+                // Reveal sections on scroll
+                const revealSections = document.querySelectorAll('.reveal-section');
+                
+                revealSections.forEach(section => {
+                    const sectionPosition = section.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (sectionPosition < screenPosition) {
+                        const delay = section.getAttribute('data-delay') || 0;
+                        setTimeout(() => {
+                            section.classList.add('active');
+                        }, delay * 1000);
+                    }
+                });
+                
+                // Cascade items animation
+                const cascadeItems = document.querySelectorAll('.cascade-item');
+                
+                cascadeItems.forEach(item => {
+                    const itemPosition = item.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.1;
+                    
+                    if (itemPosition < screenPosition) {
+                        const delay = item.getAttribute('data-delay') || 0;
+                        setTimeout(() => {
+                            item.classList.add('active');
+                        }, delay * 1000);
+                    }
+                });
+            }
+            
+            // Initialize animations
+            document.querySelectorAll('.reveal-section').forEach(el => {
+                el.classList.add('transition-all', 'duration-700');
+            });
+            
+            document.querySelectorAll('.cascade-item').forEach(el => {
+                el.classList.add('transition-all', 'duration-700');
+            });
+            
+            // Trigger animations on load and scroll
+            window.addEventListener('load', initScrollAnimations);
+            window.addEventListener('scroll', initScrollAnimations);
+            
+            // Trigger initial animation check
+            setTimeout(initScrollAnimations, 100);
+            
+            // Smooth Scrolling for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

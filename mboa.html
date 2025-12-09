@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mboa Vision | Premium Web Solutions Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4FF;
+            --accent: #7B61FF;
+            --dark: #0A0A0F;
+            --light: #F8FAFC;
+            --gradient: linear-gradient(135deg, #0066FF 0%, #00D4FF 100%);
+            --gradient-dark: linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 100%);
+            --premium-gradient: linear-gradient(135deg, #0066FF 0%, #7B61FF 50%, #00D4FF 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Premium Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Premium Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(0, 102, 255, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+
+        /* Premium Components */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease-in-out;
+        }
+
+        .premium-card:hover::before {
+            left: 100%;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 102, 255, 0.25);
+            border-color: rgba(0, 102, 255, 0.3);
+        }
+
+        .gradient-text {
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 300% 300%;
+            animation: textShine 8s ease infinite;
+        }
+
+        .premium-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--gradient);
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .premium-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease-in-out;
+        }
+
+        .premium-btn:hover::before {
+            left: 100%;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(0, 102, 255, 0.4);
+        }
+
+        /* Floating Animation */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-delay-1 {
+            animation-delay: 1s;
+        }
+
+        .float-delay-2 {
+            animation-delay: 2s;
+        }
+
+        .float-delay-3 {
+            animation-delay: 3s;
+        }
+
+        /* Glow Effect */
+        .glow-effect {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        /* Morph Animation */
+        .morph-animation {
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        /* 3D Scene Container */
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Particle Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        /* Section Reveal Animation */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Cursor */
+        #custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+
+        #cursor-ripple {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+        }
+
+        /* Loading Animation */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            border-left-color: var(--secondary);
+            animation: float 2s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease-in-out;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Stats Counter */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Service Card Hover Effect */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        .service-card:hover::after {
+            opacity: 0.1;
+        }
+
+        /* Testimonial Carousel */
+        .testimonial-carousel {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .premium-card:hover {
+                transform: none;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        /* Project Modal Styles */
+
+
+.step-indicator div {
+    transition: all 0.3s ease;
+}
+
+.step-content {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+input, select, textarea {
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2 class="text-2xl font-bold mb-2 gradient-text">Mboa Vision</h2>
+            <p class="text-lg opacity-80">Crafting Digital Excellence</p>
+            <div class="flex justify-center mt-4">
+                <div class="w-2 h-8 mx-1 bg-blue-500 rounded-full float-animation" style="animation-delay: 0s;"></div>
+                <div class="w-2 h-8 mx-1 bg-cyan-400 rounded-full float-animation" style="animation-delay: 0.2s;"></div>
+                <div class="w-2 h-8 mx-1 bg-purple-500 rounded-full float-animation" style="animation-delay: 0.4s;"></div>
+                <div class="w-2 h-8 mx-1 bg-blue-500 rounded-full float-animation" style="animation-delay: 0.6s;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Background -->
+    <div id="three-container"></div>
+
+    <!-- Particle Background -->
+    <div class="particles-container" id="particles-js"></div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-ripple"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 py-4 transition-all duration-500">
+        <nav class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="logo text-2xl font-bold text-white flex items-center">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white mr-2 glow-effect">
+                    <i class="fas fa-eye"></i>
+                </div>
+                Mboa Vision
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-blue-300 font-medium">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-blue-300 font-medium">About</a>
+                <a href="#services" class="nav-link text-white hover:text-blue-300 font-medium">Services</a>
+              
+                
+                <a href="#contact" class="premium-btn px-6 py-2 rounded-full font-medium">
+                    Start Project
+                </a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-gray-900 shadow-2xl z-50 p-8">
+        <div class="flex justify-between items-center mb-12">
+            <a href="#" class="logo text-xl font-bold text-white">Mboa Vision</a>
+            <button id="mobile-menu-close" class="text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="flex flex-col space-y-6">
+            <a href="#home" class="text-white text-lg font-medium py-2 border-b border-gray-700">Home</a>
+            <a href="#about" class="text-white text-lg font-medium py-2 border-b border-gray-700">About</a>
+            <a href="#services" class="text-white text-lg font-medium py-2 border-b border-gray-700">Services</a>
+         
+            
+            <a href="" class="premium-btn mt-4 px-6 py-3 rounded-full font-medium text-center">
+                Start Project
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative flex items-center justify-center overflow-hidden pt-20">
+        <!-- Animated Background Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-blue-500 rounded-full opacity-20 float-animation"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 bg-cyan-400 rounded-full opacity-20 float-animation float-delay-1"></div>
+        <div class="absolute bottom-40 left-20 w-24 h-24 bg-purple-500 rounded-full opacity-20 float-animation float-delay-2"></div>
+        <div class="absolute bottom-20 right-10 w-12 h-12 bg-blue-500 rounded-full opacity-20 float-animation float-delay-3"></div>
+        
+        <!-- Orbiting Elements -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="relative w-64 h-64">
+                <div class="absolute top-0 left-0 w-6 h-6 bg-blue-500 rounded-full opacity-70 orbit-animation" style="animation: orbit 10s linear infinite;"></div>
+                <div class="absolute top-0 left-0 w-4 h-4 bg-cyan-400 rounded-full opacity-70 orbit-animation" style="animation: orbit 8s linear infinite reverse; animation-delay: 1s;"></div>
+                <div class="absolute top-0 left-0 w-3 h-3 bg-purple-500 rounded-full opacity-70 orbit-animation" style="animation: orbit 12s linear infinite; animation-delay: 2s;"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left">
+                    <div class="inline-block px-4 py-2 glass-morphism rounded-full text-sm font-medium mb-6">
+                        Premium Web Solutions Agency
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                        <span class="gradient-text">Transform</span> Your Digital Presence
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 max-w-2xl">
+                        We craft exceptional digital experiences that solve complex business problems and drive measurable results. Your vision, our expertise.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
+                        <a href="#portfolio" class="premium-btn px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2"></i> View Our Work
+                        </a>
+                        <a href="#contact" class="premium-btn px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center" style="background: transparent; border: 2px solid #0066FF; color: #0066FF;">
+                            <i class="fas fa-calendar-check mr-2"></i> Book Consultation
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-12">
+                        <div class="text-center">
+                            <div class="stat-number" data-count="1">0</div>
+                            <p class="text-gray-400">Projects Completed</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number" data-count="95%">0</div>
+                            <p class="text-gray-400">Client Satisfaction</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number" data-count="+3">0</div>
+                            <p class="text-gray-400">Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-lg">
+                        <div class="absolute -top-10 -left-10 w-full h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-3xl transform rotate-3 opacity-20 float-animation"></div>
+                        <div class="absolute -bottom-10 -right-10 w-full h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-3xl transform -rotate-3 opacity-20 float-animation" style="animation-delay: 2s;"></div>
+                        <div class="premium-card relative p-2 glow-effect">
+                            <div class="rounded-2xl overflow-hidden shadow-2xl morph-animation">
+                                <div class="h-96 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                    <div class="text-center text-white p-8">
+                                        <i class="fas fa-code text-6xl mb-4 opacity-80"></i>
+                                        <h3 class="text-2xl font-bold mb-2">Digital Innovation</h3>
+                                        <p class="opacity-90">Where creativity meets technology</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="flex flex-col items-center">
+                <span class="text-blue-300 text-sm mb-2">Explore More</span>
+                <div class="w-6 h-10 border-2 border-blue-500 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-blue-500 rounded-full mt-2 animate-bounce"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 section-reveal">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    About <span class="gradient-text">Mboa Vision</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We are a premier digital agency specializing in crafting bespoke web solutions that transform businesses and create lasting digital impact.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="premium-card p-8 mb-8">
+                        <div class="flex items-start mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mr-4">
+                                <i class="fas fa-bullseye text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Our Mission</h3>
+                                <p class="text-gray-300">
+                                    To empower businesses with cutting-edge digital solutions that drive growth, enhance user experiences, and solve complex challenges.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="premium-card p-8">
+                        <div class="flex items-start mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 mr-4">
+                                <i class="fas fa-eye text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Our Vision</h3>
+                                <p class="text-gray-300">
+                                    To be the leading digital agency that sets new standards in web development, innovation, and client success.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="premium-card p-8">
+                        <h3 class="text-2xl font-bold text-white mb-6">Why Choose Mboa Vision?</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white mr-4 mt-1">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Tailored Solutions</h4>
+                                    <p class="text-gray-300">Every project is custom-built to address your unique business needs and challenges.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white mr-4 mt-1">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Cutting-Edge Technology</h4>
+                                    <p class="text-gray-300">We leverage the latest technologies and frameworks to build future-proof solutions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white mr-4 mt-1">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Results-Driven Approach</h4>
+                                    <p class="text-gray-300">We focus on delivering measurable results that impact your bottom line.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white mr-4 mt-1">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Continuous Support</h4>
+                                    <p class="text-gray-300">Our relationship doesn't end at launch - we provide ongoing support and maintenance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-800/30 section-reveal">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    Our <span class="gradient-text">Services</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We offer a comprehensive suite of digital services designed to elevate your brand and drive business growth.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="premium-card p-8 text-center service-card">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Custom Web Development</h3>
+                    <p class="text-gray-300 mb-6">
+                        Bespoke websites and web applications built with cutting-edge technologies tailored to your specific business requirements.
+                    </p>
+                    <div class="flex justify-center space-x-2 mb-6">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">React</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Vue.js</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Node.js</span>
+                    </div>
+                    <a href="#contact" class="premium-btn inline-block px-6 py-3 rounded-lg font-semibold">
+                        Learn More
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="premium-card p-8 text-center service-card">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-paint-brush text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">UI/UX Design</h3>
+                    <p class="text-gray-300 mb-6">
+                        Intuitive and visually stunning interfaces designed to enhance user experience and drive engagement and conversions.
+                    </p>
+                    <div class="flex justify-center space-x-2 mb-6">
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Figma</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm">Adobe XD</span>
+                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">Sketch</span>
+                    </div>
+                    <a href="#contact" class="premium-btn inline-block px-6 py-3 rounded-lg font-semibold">
+                        Learn More
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="premium-card p-8 text-center service-card">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-r from-green-500 to-teal-400 flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">E-Commerce Solutions</h3>
+                    <p class="text-gray-300 mb-6">
+                        Powerful online stores with seamless shopping experiences, secure payment gateways, and inventory management.
+                    </p>
+                    <div class="flex justify-center space-x-2 mb-6">
+                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Shopify</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">WooCommerce</span>
+                        <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">Magento</span>
+                    </div>
+                    <a href="#contact" class="premium-btn inline-block px-6 py-3 rounded-lg font-semibold">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="premium-btn inline-flex items-center px-8 py-4 rounded-xl font-semibold text-lg">
+                    <i class="fas fa-concierge-bell mr-2"></i> Explore All Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 section-reveal">
+        <div class="container mx-auto px-6">
+            <div class="premium-card p-12 text-center">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    Ready to <span class="gradient-text">Transform</span> Your Business?
+                </h2>
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Let's discuss your project and create something extraordinary together. Your digital success story starts here.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                    <a href="#contact" class="premium-btn px-8 py-4 rounded-xl font-semibold text-lg">
+                        <i class="fas fa-paper-plane mr-2"></i> Start Your Project
+                    </a>
+                    <a href="#portfolio" class="premium-btn px-8 py-4 rounded-xl font-semibold text-lg" style="background: transparent; border: 2px solid #0066FF; color: #0066FF;">
+                        <i class="fas fa-eye mr-2"></i> View Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="logo text-2xl font-bold text-white flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white mr-2">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        Mboa Vision
+                    </a>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-pink-500 transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    &copy; 2024 Mboa Vision. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add this after the footer section in your existing code -->
+<!-- Project Inquiry Modal -->
+<div id="project-modal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4">
+    <div class="premium-card max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-8">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold gradient-text">Start Your Project</h2>
+                <button id="close-modal" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Progress Steps -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center relative">
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-700 -translate-y-1/2 z-0"></div>
+                    
+                    <div class="step-indicator flex flex-col items-center relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white mb-2 step-active">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="text-sm text-blue-400">Details</span>
+                    </div>
+                    
+                    <div class="step-indicator flex flex-col items-center relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 mb-2">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Requirements</span>
+                    </div>
+                    
+                    <div class="step-indicator flex flex-col items-center relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 mb-2">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Schedule</span>
+                    </div>
+                    
+                    <div class="step-indicator flex flex-col items-center relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-gray-400 mb-2">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Complete</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 1: Project Details -->
+            <div id="step-1" class="step-content">
+                <h3 class="text-xl font-bold mb-6">Tell Us About Your Project</h3>
+                
+                <form id="project-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                   class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                        </div>
+                        
+                        <div>
+                            <label for="company" class="block text-gray-300 mb-2">Company/Organization</label>
+                            <input type="text" id="company" name="company" 
+                                   class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-gray-300 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="project-type" class="block text-gray-300 mb-2">Project Type *</label>
+                        <select id="project-type" name="project_type" required 
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                            <option value="">Select a project type</option>
+                            <option value="website">Website Development</option>
+                            <option value="ecommerce">E-Commerce Store</option>
+                            <option value="web-app">Web Application</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="redesign">Website Redesign</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="budget" class="block text-gray-300 mb-2">Estimated Budget *</label>
+                        <select id="budget" name="budget" required 
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                            <option value="">Select a budget range</option>
+                            <option value="1k-5k">$1,000 - $5,000</option>
+                            <option value="5k-10k">$5,000 - $10,000</option>
+                            <option value="10k-25k">$10,000 - $25,000</option>
+                            <option value="25k-50k">$25,000 - $50,000</option>
+                            <option value="50k+">$50,000+</option>
+                            <option value="not-sure">Not Sure Yet</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="timeline" class="block text-gray-300 mb-2">Desired Timeline *</label>
+                        <select id="timeline" name="timeline" required 
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                            <option value="">Select a timeline</option>
+                            <option value="asap">As Soon As Possible</option>
+                            <option value="1-2">1-2 Months</option>
+                            <option value="2-4">2-4 Months</option>
+                            <option value="4-6">4-6 Months</option>
+                            <option value="6+">6+ Months</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button type="button" id="next-to-step-2" class="premium-btn px-6 py-3 rounded-xl font-semibold">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Step 2: Project Requirements -->
+            <div id="step-2" class="step-content hidden">
+                <h3 class="text-xl font-bold mb-6">Project Requirements</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="project-goals" class="block text-gray-300 mb-2">Primary Goals & Objectives *</label>
+                        <textarea id="project-goals" name="project_goals" rows="4" required 
+                                  class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                  placeholder="What do you hope to achieve with this project?"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="target-audience" class="block text-gray-300 mb-2">Target Audience</label>
+                        <textarea id="target-audience" name="target_audience" rows="3" 
+                                  class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                  placeholder="Describe your target audience"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 mb-4">Required Features</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="responsive" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>Responsive Design</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="ecommerce" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>E-Commerce</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="cms" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>Content Management</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="seo" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>SEO Optimization</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="analytics" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>Analytics Integration</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="social" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>Social Media Integration</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="multilingual" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>Multilingual Support</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="features" value="membership" class="mr-3 rounded bg-gray-700 border-gray-600 text-blue-500 focus:ring-blue-500">
+                                <span>Membership System</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="reference-sites" class="block text-gray-300 mb-2">Reference Websites (if any)</label>
+                        <textarea id="reference-sites" name="reference_sites" rows="3" 
+                                  class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                  placeholder="List any websites you like and what you like about them"></textarea>
+                    </div>
+                    
+                    <div class="flex justify-between">
+                        <button type="button" id="back-to-step-1" class="premium-btn px-6 py-3 rounded-xl font-semibold" style="background: transparent; border: 2px solid #0066FF; color: #0066FF;">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </button>
+                        <button type="button" id="next-to-step-3" class="premium-btn px-6 py-3 rounded-xl font-semibold">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3: Project Schedule -->
+            <div id="step-3" class="step-content hidden">
+                <h3 class="text-xl font-bold mb-6">Project Schedule & Next Steps</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Our Process</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Discovery Call</h5>
+                                    <p class="text-gray-400 text-sm">We'll schedule a 30-45 minute call to discuss your project in detail</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Proposal & Quote</h5>
+                                    <p class="text-gray-400 text-sm">We'll prepare a detailed proposal with timeline and cost estimate</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Project Kickoff</h5>
+                                    <p class="text-gray-400 text-sm">Once approved, we'll begin the project with a detailed kickoff meeting</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="preferred-contact" class="block text-gray-300 mb-2">Preferred Contact Method</label>
+                        <select id="preferred-contact" name="preferred_contact" 
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                            <option value="email">Email</option>
+                            <option value="phone">Phone Call</option>
+                            <option value="video">Video Call</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="availability" class="block text-gray-300 mb-2">Best Time to Contact</label>
+                        <select id="availability" name="availability" 
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                            <option value="morning">Morning (9am - 12pm)</option>
+                            <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                            <option value="evening">Evening (5pm - 8pm)</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="additional-info" class="block text-gray-300 mb-2">Additional Information</label>
+                        <textarea id="additional-info" name="additional_info" rows="3" 
+                                  class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                  placeholder="Any other details we should know?"></textarea>
+                    </div>
+                    
+                    <div class="flex justify-between">
+                        <button type="button" id="back-to-step-2" class="premium-btn px-6 py-3 rounded-xl font-semibold" style="background: transparent; border: 2px solid #0066FF; color: #0066FF;">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </button>
+                        <button type="submit" id="submit-project" class="premium-btn px-6 py-3 rounded-xl font-semibold">
+                            Submit Project Request <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 4: Confirmation -->
+            <div id="step-4" class="step-content hidden text-center">
+                <div class="py-8">
+                    <div class="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center text-white mx-auto mb-6">
+                        <i class="fas fa-check text-2xl"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4">Thank You!</h3>
+                    <p class="text-gray-300 mb-6 max-w-md mx-auto">
+                        We've received your project details and will contact you within 24 hours to schedule your discovery call.
+                    </p>
+                    
+                    <div class="premium-card p-6 mb-6 text-left">
+                        <h4 class="font-bold mb-4">What Happens Next?</h4>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-clock text-blue-400 mr-3 mt-1"></i>
+                                <span>We'll review your project requirements</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-calendar-alt text-blue-400 mr-3 mt-1"></i>
+                                <span>Schedule a discovery call at your convenience</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-file-contract text-blue-400 mr-3 mt-1"></i>
+                                <span>Provide a detailed proposal and quote</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button id="close-success" class="premium-btn px-6 py-3 rounded-xl font-semibold">
+                        Close <i class="fas fa-times ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize animations and effects
+            initLoadingScreen();
+            initCustomCursor();
+            initMobileMenu();
+            initScrollAnimations();
+            initParticleBackground();
+            init3DBackground();
+            initStatsCounter();
+        });
+
+        // Loading Screen
+        function initLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.visibility = 'hidden';
+            }, 3000);
+        }
+
+        // Custom Cursor
+        function initCustomCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            const cursorRipple = document.getElementById('cursor-ripple');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    cursorRipple.style.left = e.clientX + 'px';
+                    cursorRipple.style.top = e.clientY + 'px';
+                }, 100);
+            });
+            
+            document.addEventListener('mousedown', () => {
+                cursor.style.transform = 'scale(0.8)';
+                cursorRipple.style.transform = 'scale(1.2)';
+            });
+            
+            document.addEventListener('mouseup', () => {
+                cursor.style.transform = 'scale(1)';
+                cursorRipple.style.transform = 'scale(1)';
+            });
+            
+            // Interactive elements cursor effect
+            const interactiveElements = document.querySelectorAll('a, button, .premium-btn, .premium-card');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(1.5)';
+                    cursorRipple.style.transform = 'scale(1.5)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                    cursorRipple.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Mobile Menu
+        function initMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+            });
+            
+            mobileMenuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        }
+
+        // Scroll Animations
+        function initScrollAnimations() {
+            const sectionReveals = document.querySelectorAll('.section-reveal');
+            
+            const revealOnScroll = () => {
+                sectionReveals.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight - 100) {
+                        section.classList.add('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', revealOnScroll);
+            window.addEventListener('load', revealOnScroll);
+        }
+
+        // Particle Background
+        function initParticleBackground() {
+            // Simple particle effect implementation
+            const container = document.querySelector('.particles-container');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute rounded-full';
+                
+                // Random properties
+                const size = Math.random() * 5 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const opacity = Math.random() * 0.5 + 0.1;
+                const color = `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 200 + 55)}, 255, ${opacity})`;
+                const animationDelay = Math.random() * 20;
+                const animationDuration = Math.random() * 10 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.backgroundColor = color;
+                particle.style.animation = `float ${animationDuration}s ease-in-out infinite`;
+                particle.style.animationDelay = `${animationDelay}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // 3D Background
+        function init3DBackground() {
+            const container = document.getElementById('three-container');
+            
+            // Basic Three.js scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+            
+            // Create floating geometric shapes
+            const geometry = new THREE.IcosahedronGeometry(1, 0);
+            const material = new THREE.MeshBasicMaterial({ 
+                color: 0x0066FF, 
+                wireframe: true,
+                transparent: true,
+                opacity: 0.3
+            });
+            
+            const shapes = [];
+            const shapeCount = 8;
+            
+            for (let i = 0; i < shapeCount; i++) {
+                const shape = new THREE.Mesh(geometry, material);
+                
+                // Random position
+                shape.position.x = (Math.random() - 0.5) * 20;
+                shape.position.y = (Math.random() - 0.5) * 20;
+                shape.position.z = (Math.random() - 0.5) * 10;
+                
+                // Random scale
+                const scale = Math.random() * 0.5 + 0.5;
+                shape.scale.set(scale, scale, scale);
+                
+                scene.add(shape);
+                shapes.push(shape);
+            }
+            
+            camera.position.z = 5;
+            
+            // Animation
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                shapes.forEach((shape, index) => {
+                    shape.rotation.x += 0.01;
+                    shape.rotation.y += 0.01;
+                    
+                    // Floating motion
+                    shape.position.y += Math.sin(Date.now() * 0.001 + index) * 0.005;
+                });
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Stats Counter
+        function initStatsCounter() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const count = parseInt(target.getAttribute('data-count'));
+                        const duration = 2000; // 2 seconds
+                        const step = count / (duration / 16); // 60fps
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= count) {
+                                current = count;
+                                clearInterval(timer);
+                            }
+                            target.textContent = Math.floor(current);
+                        }, 16);
+                        
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statNumbers.forEach(stat => {
+                observer.observe(stat);
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.remove('active');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('glass-morphism', 'py-3');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.remove('glass-morphism', 'py-3');
+                header.classList.add('py-4');
+            }
+        });
+
+        // Project Inquiry Modal Functionality
+function initProjectModal() {
+    const projectModal = document.getElementById('project-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const closeSuccessBtn = document.getElementById('close-success');
+    const startProjectBtns = document.querySelectorAll('a[href="#contact"]');
+    
+    // Step navigation elements
+    const stepIndicators = document.querySelectorAll('.step-indicator');
+    const stepContents = document.querySelectorAll('.step-content');
+    const nextToStep2 = document.getElementById('next-to-step-2');
+    const nextToStep3 = document.getElementById('next-to-step-3');
+    const backToStep1 = document.getElementById('back-to-step-1');
+    const backToStep2 = document.getElementById('back-to-step-2');
+    const submitProject = document.getElementById('submit-project');
+    
+    // Open modal when clicking "Start Project" buttons
+    startProjectBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            projectModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            resetFormToStep1();
+        });
+    });
+    
+    // Close modal
+    function closeModal() {
+        projectModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+    
+    closeModalBtn.addEventListener('click', closeModal);
+    closeSuccessBtn.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside content
+    projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) {
+            closeModal();
+        }
+    });
+    
+    // Step navigation functions
+    function goToStep(stepNumber) {
+        // Hide all step contents
+        stepContents.forEach(content => {
+            content.classList.add('hidden');
+        });
+        
+        // Show target step
+        document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+        
+        // Update step indicators
+        stepIndicators.forEach((indicator, index) => {
+            const circle = indicator.querySelector('div');
+            const text = indicator.querySelector('span');
+            
+            if (index < stepNumber) {
+                circle.classList.remove('bg-gray-700', 'text-gray-400');
+                circle.classList.add('bg-blue-500', 'text-white');
+                text.classList.remove('text-gray-500');
+                text.classList.add('text-blue-400');
+            } else if (index === stepNumber - 1) {
+                circle.classList.remove('bg-gray-700', 'text-gray-400');
+                circle.classList.add('bg-blue-500', 'text-white');
+                text.classList.remove('text-gray-500');
+                text.classList.add('text-blue-400');
+            } else {
+                circle.classList.remove('bg-blue-500', 'text-white');
+                circle.classList.add('bg-gray-700', 'text-gray-400');
+                text.classList.remove('text-blue-400');
+                text.classList.add('text-gray-500');
+            }
+        });
+    }
+    
+    function resetFormToStep1() {
+        goToStep(1);
+        document.getElementById('project-form').reset();
+    }
+    
+    // Step navigation event listeners
+    nextToStep2.addEventListener('click', () => {
+        // Validate step 1 fields
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const projectType = document.getElementById('project-type').value;
+        const budget = document.getElementById('budget').value;
+        const timeline = document.getElementById('timeline').value;
+        
+        if (!name || !email || !projectType || !budget || !timeline) {
+            showValidationError('Please fill in all required fields');
+            return;
+        }
+        
+        goToStep(2);
+    });
+    
+    nextToStep3.addEventListener('click', () => {
+        // Validate step 2 fields
+        const projectGoals = document.getElementById('project-goals').value;
+        
+        if (!projectGoals) {
+            showValidationError('Please describe your project goals');
+            return;
+        }
+        
+        goToStep(3);
+    });
+    
+    backToStep1.addEventListener('click', () => goToStep(1));
+    backToStep2.addEventListener('click', () => goToStep(2));
+    
+    // Form submission
+    submitProject.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // In a real implementation, you would send this data to your backend
+        const formData = new FormData(document.getElementById('project-form'));
+        const projectData = {
+            name: formData.get('name'),
+            company: formData.get('company'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            project_type: formData.get('project_type'),
+            budget: formData.get('budget'),
+            timeline: formData.get('timeline'),
+            project_goals: formData.get('project_goals'),
+            target_audience: formData.get('target_audience'),
+            features: formData.getAll('features'),
+            reference_sites: formData.get('reference_sites'),
+            preferred_contact: formData.get('preferred_contact'),
+            availability: formData.get('availability'),
+            additional_info: formData.get('additional_info')
+        };
+        
+        // Simulate form submission
+        console.log('Project Data:', projectData);
+        
+        // Show success message
+        goToStep(4);
+        
+        // In a real implementation, you would send this data to your server
+        // fetch('/api/project-inquiry', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(projectData)
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     goToStep(4);
+        // })
+        // .catch(error => {
+        //     console.error('Error:', error);
+        //     showSubmissionError();
+        // });
+    });
+    
+    function showValidationError(message) {
+        // Create a temporary error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 premium-card p-4 text-red-400 z-[110]';
+        errorDiv.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        document.body.appendChild(errorDiv);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 3000);
+    }
+    
+    function showSubmissionError() {
+        // Similar to showValidationError but for submission errors
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 premium-card p-4 text-red-400 z-[110]';
+        errorDiv.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <span>There was an error submitting your request. Please try again.</span>
+            </div>
+        `;
+        document.body.appendChild(errorDiv);
+        
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 5000);
+    }
+}
+
+// Initialize the project modal when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... your existing initialization code ...
+    initProjectModal();
+});
+    </script>
+</body>
+</html>
